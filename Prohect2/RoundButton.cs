@@ -19,6 +19,7 @@ namespace Prohect2
         private Color borderColor = Color.PaleVioletRed;
         public Point left;
         public Point right;
+        public Neuron neuron = new Neuron();
 
         //Properties
         [Category("RJ Code Advance")]

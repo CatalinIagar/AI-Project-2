@@ -1,31 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prohect2
 {
     public partial class Form1 : Form
     {
-        public int height = 768;
-        public int width = 1280;
         public int margin = 20;
         public int topMargin;
-        public int radius = 70;
+        public int radius = 90;
         public int spaceBetweenNeurons = 280;
         public int heightBetweenNeurons;
         public int nOfHiddenLayers;
         public bool toPaint = false;
-
-        List<List<RoundButton>> LayersButtons = new List<List<RoundButton>>();
-
+        readonly List<List<RoundButton>> LayersButtons = new List<List<RoundButton>>();
         public Form1()
         {
             InitializeComponent();
@@ -42,29 +34,12 @@ namespace Prohect2
                 | BindingFlags.Instance | BindingFlags.NonPublic, null,
                 mainPanel, new object[] { true });
         }
-
         protected override void OnScroll(ScrollEventArgs se)
         {
             base.OnScroll(se);
             mainPanel.Invalidate();
         }
-
-        
-
-        private void drawLine(List<RoundButton> fromButtons, List<RoundButton> toButtons)
-        {
-            Graphics g = mainPanel.CreateGraphics();
-            Pen pen = new Pen(Color.Black, 1.5f);
-            for(int i = 0; i < fromButtons.Count; i++)
-            {
-                for(int j = 0; j < toButtons.Count; j++)
-                {
-                    g.DrawLine(pen, fromButtons[i].right, toButtons[j].left);
-                }
-            }
-        }
-
-        private void addButtons(int size, int xPos, int nOfButtons, List<RoundButton> buttons)
+        private void AddButtons(int size, int xPos, int nOfButtons, List<RoundButton> buttons, string name)
         {
             int half = (size - topMargin) / 2;
             int halfCurrentSize = (nOfButtons * (heightBetweenNeurons - 1)) / 2 + radius / 2;
@@ -73,28 +48,55 @@ namespace Prohect2
 
             for(int i = 0; i < nOfButtons; i++)
             {
-                RoundButton rb = new RoundButton();
-                rb.Name = i.ToString();
-                rb.Width = radius;
-                rb.Height = radius;
-                rb.BorderRadius = radius / 2;
+                RoundButton rb = new RoundButton
+                {
+                    Name = i.ToString(),
+                    Width = radius,
+                    Height = radius,
+                    BorderRadius = radius / 2,
+                    Text = name + i.ToString()
+                };
                 Point point = new Point(xPos, firstPos + heightBetweenNeurons * i);
                 Point right = new Point(xPos + radius, firstPos + heightBetweenNeurons * i + radius / 2);
                 Point left = new Point(xPos, firstPos + heightBetweenNeurons * i + radius / 2);
                 rb.Location = point;
                 rb.right = right;
                 rb.left = left;
+                if(name == "Input - ") Array.Resize(ref rb.neuron.x, 1);
+                else Array.Resize(ref rb.neuron.x, nOfButtons);
+                rb.Click += (sender, e) => inputNeuronButton(sender, e);
                 buttons.Add(rb);
                 mainPanel.Controls.Add(rb);
             }
         }
 
-        private void mainPanel_Scroll(object sender, ScrollEventArgs e)
+        private void inputNeuronButton(object sender, EventArgs e)
+        {
+            RoundButton roundButton = (RoundButton)sender;
+            this.Enabled = false;
+            using (var form = new InputNeuron(roundButton.Name, roundButton.neuron))
+            {
+                this.Enabled = true;
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                    double val = form.returnValue;
+                    roundButton.neuron.x[0] = val;
+
+                    foreach(RoundButton rb in LayersButtons[1])
+                    {
+                        rb.neuron.x[Convert.ToInt32(roundButton.Name)] = val;
+                    }
+                }
+            }
+        }
+
+        private void MainPanel_Scroll(object sender, ScrollEventArgs e)
         {
             this.Invalidate();
         }
-
-        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.TranslateTransform(mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
             Graphics g = e.Graphics;
@@ -116,14 +118,15 @@ namespace Prohect2
                 }
             }
         }
-
-        private void generateButton_Click(object sender, EventArgs e)
+        private void GenerateButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             using(var form = new GenerateNetwork())
             {
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
+                    this.Enabled = true;
                     LayersButtons.Clear();
                     mainPanel.Controls.Clear();
                     int[] val = form.ReturnValue;
@@ -140,20 +143,20 @@ namespace Prohect2
 
                     //addInputs
                     List<RoundButton> radioButtons = new List<RoundButton>();
-                    addButtons(maxSize, margin + 2 * radius + 0 * spaceBetweenNeurons, nOfNeurons[0], radioButtons);
+                    AddButtons(maxSize, margin + 2 * radius + 0 * spaceBetweenNeurons, nOfNeurons[0], radioButtons, "Input - ");
                     LayersButtons.Add(radioButtons);
 
                     //addHiddenLayers
                     for (int i = 1; i < nOfHiddenLayers + 1; i++)
                     {
                         List<RoundButton> radioButtonsH = new List<RoundButton>();
-                        addButtons(maxSize, margin + 2 * radius + i * spaceBetweenNeurons, nOfNeurons[i + 1], radioButtonsH);
+                        AddButtons(maxSize, margin + 2 * radius + i * spaceBetweenNeurons, nOfNeurons[i + 1], radioButtonsH, "HLayer" + i.ToString() + " - ");
                         LayersButtons.Add(radioButtonsH);
                     }
 
                     //addOutputs
                     List<RoundButton> radioButtonsO = new List<RoundButton>();
-                    addButtons(maxSize, margin + 2 * radius + (nOfHiddenLayers + 1) * spaceBetweenNeurons, nOfNeurons[1], radioButtonsO);
+                    AddButtons(maxSize, margin + 2 * radius + (nOfHiddenLayers + 1) * spaceBetweenNeurons, nOfNeurons[1], radioButtonsO, "Output - ");
                     LayersButtons.Add(radioButtonsO);
                     toPaint = true;
                     mainPanel.Invalidate();

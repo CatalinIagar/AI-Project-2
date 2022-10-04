@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prohect2
@@ -22,7 +15,6 @@ namespace Prohect2
 
             this.ReturnValue = new int[6];
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -33,7 +25,6 @@ namespace Prohect2
                 return myCp;
             }
         }
-
         private void layersInput_ValueChanged(object sender, EventArgs e)
         {
             if(layersInput.Value == 3)
@@ -64,7 +55,6 @@ namespace Prohect2
                 hidden3NeuronsInput.Enabled = false;
             }
         }
-
         private void generateBtn_Click(object sender, EventArgs e)
         {
             this.ReturnValue[0] = (int)layersInput.Value;
@@ -88,7 +78,6 @@ namespace Prohect2
                 this.ReturnValue[3] = (int)hidden2NeuronsInput.Value;
                 this.ReturnValue[4] = (int)hidden3NeuronsInput.Value;
             }
-
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

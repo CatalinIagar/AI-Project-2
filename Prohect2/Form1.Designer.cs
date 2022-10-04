@@ -61,7 +61,7 @@
             this.generateButton.Text = "Generate Network";
             this.generateButton.TextColor = System.Drawing.Color.White;
             this.generateButton.UseVisualStyleBackColor = false;
-            this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
+            this.generateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
             // topPanel
             // 
@@ -79,8 +79,8 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1500, 684);
             this.mainPanel.TabIndex = 2;
-            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.mainPanel_Scroll);
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
+            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MainPanel_Scroll);
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // Form1
             // 
