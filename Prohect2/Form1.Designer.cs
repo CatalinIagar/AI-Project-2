@@ -30,32 +30,15 @@
         {
             this.leftPanel = new System.Windows.Forms.Panel();
             this.generateButton = new Prohect2.RoundButton();
-            this.doStuffButton = new Prohect2.RoundButton();
-            this.OutputLayer = new System.Windows.Forms.NumericUpDown();
-            this.Hiden3Layer = new System.Windows.Forms.NumericUpDown();
-            this.Hiden2Layer = new System.Windows.Forms.NumericUpDown();
-            this.Hiden1Layer = new System.Windows.Forms.NumericUpDown();
-            this.inputLayer = new System.Windows.Forms.NumericUpDown();
             this.topPanel = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.leftPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OutputLayer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden3Layer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden2Layer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden1Layer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inputLayer)).BeginInit();
             this.SuspendLayout();
             // 
             // leftPanel
             // 
             this.leftPanel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.leftPanel.Controls.Add(this.generateButton);
-            this.leftPanel.Controls.Add(this.doStuffButton);
-            this.leftPanel.Controls.Add(this.OutputLayer);
-            this.leftPanel.Controls.Add(this.Hiden3Layer);
-            this.leftPanel.Controls.Add(this.Hiden2Layer);
-            this.leftPanel.Controls.Add(this.Hiden1Layer);
-            this.leftPanel.Controls.Add(this.inputLayer);
             this.leftPanel.Location = new System.Drawing.Point(0, 0);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(139, 767);
@@ -79,59 +62,6 @@
             this.generateButton.TextColor = System.Drawing.Color.White;
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.generateButton_Click);
-            // 
-            // doStuffButton
-            // 
-            this.doStuffButton.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.doStuffButton.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.doStuffButton.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.doStuffButton.BorderRadius = 0;
-            this.doStuffButton.BorderSize = 0;
-            this.doStuffButton.FlatAppearance.BorderSize = 0;
-            this.doStuffButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doStuffButton.ForeColor = System.Drawing.Color.White;
-            this.doStuffButton.Location = new System.Drawing.Point(24, 411);
-            this.doStuffButton.Name = "doStuffButton";
-            this.doStuffButton.Size = new System.Drawing.Size(83, 40);
-            this.doStuffButton.TabIndex = 5;
-            this.doStuffButton.Text = "Press me";
-            this.doStuffButton.TextColor = System.Drawing.Color.White;
-            this.doStuffButton.UseVisualStyleBackColor = false;
-            // 
-            // OutputLayer
-            // 
-            this.OutputLayer.Location = new System.Drawing.Point(7, 367);
-            this.OutputLayer.Name = "OutputLayer";
-            this.OutputLayer.Size = new System.Drawing.Size(120, 20);
-            this.OutputLayer.TabIndex = 4;
-            // 
-            // Hiden3Layer
-            // 
-            this.Hiden3Layer.Location = new System.Drawing.Point(7, 331);
-            this.Hiden3Layer.Name = "Hiden3Layer";
-            this.Hiden3Layer.Size = new System.Drawing.Size(120, 20);
-            this.Hiden3Layer.TabIndex = 3;
-            // 
-            // Hiden2Layer
-            // 
-            this.Hiden2Layer.Location = new System.Drawing.Point(8, 290);
-            this.Hiden2Layer.Name = "Hiden2Layer";
-            this.Hiden2Layer.Size = new System.Drawing.Size(120, 20);
-            this.Hiden2Layer.TabIndex = 2;
-            // 
-            // Hiden1Layer
-            // 
-            this.Hiden1Layer.Location = new System.Drawing.Point(8, 254);
-            this.Hiden1Layer.Name = "Hiden1Layer";
-            this.Hiden1Layer.Size = new System.Drawing.Size(120, 20);
-            this.Hiden1Layer.TabIndex = 1;
-            // 
-            // inputLayer
-            // 
-            this.inputLayer.Location = new System.Drawing.Point(8, 214);
-            this.inputLayer.Name = "inputLayer";
-            this.inputLayer.Size = new System.Drawing.Size(120, 20);
-            this.inputLayer.TabIndex = 0;
             // 
             // topPanel
             // 
@@ -163,11 +93,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.leftPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OutputLayer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden3Layer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden2Layer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Hiden1Layer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inputLayer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -177,12 +102,6 @@
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Panel mainPanel;
-        private RoundButton doStuffButton;
-        private System.Windows.Forms.NumericUpDown OutputLayer;
-        private System.Windows.Forms.NumericUpDown Hiden3Layer;
-        private System.Windows.Forms.NumericUpDown Hiden2Layer;
-        private System.Windows.Forms.NumericUpDown Hiden1Layer;
-        private System.Windows.Forms.NumericUpDown inputLayer;
         private RoundButton generateButton;
     }
 }

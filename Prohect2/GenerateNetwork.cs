@@ -20,7 +20,7 @@ namespace Prohect2
             this.MinimizeBox = false;
             this.MaximizeBox = false;
 
-            this.ReturnValue = new int[1];
+            this.ReturnValue = new int[6];
         }
 
         private const int CP_NOCLOSE_BUTTON = 0x200;
@@ -67,7 +67,28 @@ namespace Prohect2
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            this.ReturnValue[0] = 5;
+            this.ReturnValue[0] = (int)layersInput.Value;
+            this.ReturnValue[1] = (int)inputNeuronsInput.Value;
+            this.ReturnValue[5] = (int)outputNeuronsInput.Value;
+            if(ReturnValue[0] == 1)
+            {
+                this.ReturnValue[2] = (int)hidden1NeuronsInput.Value;
+                this.ReturnValue[3] = 0;
+                this.ReturnValue[4] = 0;
+            }
+            if (ReturnValue[0] == 2)
+            {
+                this.ReturnValue[2] = (int)hidden1NeuronsInput.Value;
+                this.ReturnValue[3] = (int)hidden2NeuronsInput.Value;
+                this.ReturnValue[4] = 0;
+            }
+            if (ReturnValue[0] == 3)
+            {
+                this.ReturnValue[2] = (int)hidden1NeuronsInput.Value;
+                this.ReturnValue[3] = (int)hidden2NeuronsInput.Value;
+                this.ReturnValue[4] = (int)hidden3NeuronsInput.Value;
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -172,9 +172,9 @@
             this.hidden2Lbl.Enabled = false;
             this.hidden2Lbl.Location = new System.Drawing.Point(12, 170);
             this.hidden2Lbl.Name = "hidden2Lbl";
-            this.hidden2Lbl.Size = new System.Drawing.Size(239, 13);
+            this.hidden2Lbl.Size = new System.Drawing.Size(223, 13);
             this.hidden2Lbl.TabIndex = 8;
-            this.hidden2Lbl.Text = "Insert the number of neurons on the output layer: ";
+            this.hidden2Lbl.Text = "Insert the number of neurons on the H2 layer: ";
             // 
             // hidden1NeuronsInput
             // 
@@ -203,9 +203,9 @@
             this.hidden1Lbl.AutoSize = true;
             this.hidden1Lbl.Location = new System.Drawing.Point(13, 140);
             this.hidden1Lbl.Name = "hidden1Lbl";
-            this.hidden1Lbl.Size = new System.Drawing.Size(239, 13);
+            this.hidden1Lbl.Size = new System.Drawing.Size(223, 13);
             this.hidden1Lbl.TabIndex = 10;
-            this.hidden1Lbl.Text = "Insert the number of neurons on the output layer: ";
+            this.hidden1Lbl.Text = "Insert the number of neurons on the H1 layer: ";
             // 
             // hidden3NeuronsInput
             // 
@@ -236,9 +236,9 @@
             this.hidden3Lbl.Enabled = false;
             this.hidden3Lbl.Location = new System.Drawing.Point(13, 200);
             this.hidden3Lbl.Name = "hidden3Lbl";
-            this.hidden3Lbl.Size = new System.Drawing.Size(239, 13);
+            this.hidden3Lbl.Size = new System.Drawing.Size(223, 13);
             this.hidden3Lbl.TabIndex = 12;
-            this.hidden3Lbl.Text = "Insert the number of neurons on the output layer: ";
+            this.hidden3Lbl.Text = "Insert the number of neurons on the H3 layer: ";
             // 
             // generateBtn
             // 
