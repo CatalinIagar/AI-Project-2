@@ -23,9 +23,8 @@ namespace Prohect2
             this.MinimizeBox = false;
             this.MaximizeBox = false;
 
-            Array.Resize(ref neuron.x, 1);
             this.inputNr.Value = (decimal)neuron.x[0];
-            this.Text = "Input Neuron " + name;
+            this.Text = "Input Neuron - " + name;
         }
 
         private const int CP_NOCLOSE_BUTTON = 0x200;
@@ -41,6 +40,7 @@ namespace Prohect2
 
         private void roundButton1_Click(object sender, EventArgs e)
         {
+            
             returnValue = (double)inputNr.Value;
             this.DialogResult = DialogResult.OK;
         }

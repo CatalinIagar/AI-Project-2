@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Prohect2
 {
@@ -62,11 +63,47 @@ namespace Prohect2
                 rb.Location = point;
                 rb.right = right;
                 rb.left = left;
-                if(name == "Input - ") Array.Resize(ref rb.neuron.x, 1);
-                else Array.Resize(ref rb.neuron.x, nOfButtons);
-                rb.Click += (sender, e) => inputNeuronButton(sender, e);
+                if (name == "Input - ") 
+                {
+                    Array.Resize(ref rb.neuron.x, 1);
+                    Array.Resize(ref rb.neuron.w, 1);
+                    rb.neuron.nOfInputs = 1;
+                    rb.Click += (sender, e) => inputNeuronButton(sender, e);
+                }
+                else if (name.Contains("HLayer"))
+                {
+                    Array.Resize(ref rb.neuron.x, LayersButtons[0].Count);
+                    Array.Resize(ref rb.neuron.w, LayersButtons[0].Count);
+                    rb.neuron.nOfInputs = LayersButtons[0].Count;
+                    rb.Click += (sender, e) => hiddenNeuronButton(sender, e);
+                }
+                else
+                {
+
+                }
                 buttons.Add(rb);
                 mainPanel.Controls.Add(rb);
+            }
+        }
+
+        private void hiddenNeuronButton(object sender, EventArgs e)
+        {
+            RoundButton roundButton = (RoundButton)sender;
+            this.Enabled = false;
+            using (var form = new HiddenLayerNeuron(roundButton.Text, roundButton.neuron))
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                    double[] val = form.returnValue;
+                    for(int i = 0; i < roundButton.neuron.nOfInputs; i++)
+                    {
+                        roundButton.neuron.w[i] = val[i];
+                    }
+
+                    //updateData();
+                }
             }
         }
 
@@ -76,19 +113,32 @@ namespace Prohect2
             this.Enabled = false;
             using (var form = new InputNeuron(roundButton.Name, roundButton.neuron))
             {
-                this.Enabled = true;
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     this.Enabled = true;
                     double val = form.returnValue;
                     roundButton.neuron.x[0] = val;
-
-                    foreach(RoundButton rb in LayersButtons[1])
-                    {
-                        rb.neuron.x[Convert.ToInt32(roundButton.Name)] = val;
-                    }
+                    //updateData();
                 }
+            }
+        }
+
+        private void updateData()
+        {
+            transferInputData();
+        }
+
+        private void transferInputData()
+        {
+            List<RoundButton> rbInput = LayersButtons[0];
+            List<RoundButton> rbHL1 = LayersButtons[1];
+            for(int i = 0; i <= rbInput.Count; i++)
+            {
+                for(int j = 0; j <= rbHL1.Count; j++)
+                {
+                    
+                } 
             }
         }
 

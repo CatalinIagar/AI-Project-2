@@ -11,3 +11,4 @@ C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.exe
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.pdb
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.GenerateNetwork.resources
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.InputNeuron.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.HiddenLayerNeuron.resources
