@@ -1,0 +1,11 @@
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Debug\Prohect2.exe.config
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Debug\Prohect2.exe
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Debug\Prohect2.pdb
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Proiect2.csproj.SuggestedBindingRedirects.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.Form1.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.GenerateNetwork.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.Properties.Resources.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Proiect2.csproj.GenerateResource.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Proiect2.csproj.CoreCompileInputs.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.exe
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.pdb

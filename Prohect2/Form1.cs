@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -97,6 +98,7 @@ namespace Prohect2
         {
             e.Graphics.TranslateTransform(mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
             Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
             Pen pen = new Pen(Color.Red, 1.75f);
 
             if (toPaint == false) return;
@@ -129,9 +131,9 @@ namespace Prohect2
 
                     nOfHiddenLayers = val[0];
 
-                    if (nOfHiddenLayers == 1) spaceBetweenNeurons = 560;
-                    if (nOfHiddenLayers == 2) spaceBetweenNeurons = 370;
-                    if (nOfHiddenLayers == 3) spaceBetweenNeurons = 280;
+                    if (nOfHiddenLayers == 1) spaceBetweenNeurons = 1120 / 2;
+                    if (nOfHiddenLayers == 2) spaceBetweenNeurons = 1120 / 3;
+                    if (nOfHiddenLayers == 3) spaceBetweenNeurons = 1120 / 4;
 
                     int maxNumber = nOfNeurons.Max();
                     int maxSize = topMargin + (maxNumber - 1) * heightBetweenNeurons + radius;
@@ -153,14 +155,10 @@ namespace Prohect2
                     List<RoundButton> radioButtonsO = new List<RoundButton>();
                     addButtons(maxSize, margin + 2 * radius + (nOfHiddenLayers + 1) * spaceBetweenNeurons, nOfNeurons[1], radioButtonsO);
                     LayersButtons.Add(radioButtonsO);
-
-
-
                     toPaint = true;
                     mainPanel.Invalidate();
                 }
             }
         }
-        
     }
 }
