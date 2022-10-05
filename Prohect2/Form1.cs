@@ -87,7 +87,6 @@ namespace Prohect2
                 mainPanel.Controls.Add(rb);
             }
         }
-
         private void HiddenNeuronButton(object sender, EventArgs e)
         {
             RoundButton roundButton = (RoundButton)sender;
@@ -108,7 +107,6 @@ namespace Prohect2
                 }
             }
         }
-
         private void InputNeuronButton(object sender, EventArgs e)
         {
             RoundButton roundButton = (RoundButton)sender;
@@ -126,74 +124,51 @@ namespace Prohect2
                 }
             }
         }
-
-        private void UpdateData()
+        private void AddHiddenLayerButtons()
         {
-            TransferData(LayersButtons[0], LayersButtons[1]);
-            for(int i = 1; i <= nOfHiddenLayers; i++)
+            topPanel.Controls.Clear();
+            for (int i = 1; i <= nOfHiddenLayers; i++)
             {
-                CalculateOutput(LayersButtons[i]);
-                TransferData(LayersButtons[i], LayersButtons[i + 1]);
-            }
-            CalculateOutput(LayersButtons[nOfHiddenLayers + 1]);
-        }
-
-        private void CalculateOutput(List<RoundButton> roundButtons)
-        {
-            foreach(RoundButton rb in roundButtons)
-            {
-                rb.neuron.ginput = CalculateInput(rb.neuron);
-                rb.neuron.activation = CalculateActivation(rb.neuron);
-                rb.neuron.output = CalculateOutputValue(rb.neuron);
-            }
-        }
-
-        private double CalculateOutputValue(Neuron neuron)
-        {
-            if (neuron.binaryState == NeuronState.BINARYFALSE) return neuron.activation;
-
-            if (neuron.inputFunction == NeuronState.TREAPTA || neuron.inputFunction == NeuronState.SEMN) return neuron.activation;
-            if (neuron.inputFunction == NeuronState.SIGM)
-            {
-                if (neuron.activation >= 0.5) return 1;
-                return 0;
-            }
-            if (neuron.inputFunction == NeuronState.TANH || neuron.inputFunction == NeuronState.LINIARA)
-            {
-                if (neuron.activation >= 0) return 1;
-                return -1;
-            }
-            return 0;
-        }
-
-        private double CalculateActivation(Neuron neuron)
-        {
-            if (neuron.activationFunction == NeuronState.TREAPTA) return FunctiiActivare.CalculActivareTreapta(neuron);
-            if (neuron.activationFunction == NeuronState.SEMN) return FunctiiActivare.CalculActivareSemn(neuron);
-            if (neuron.activationFunction == NeuronState.SIGM) return FunctiiActivare.CalculActivareSigmoidala(neuron);
-            if (neuron.activationFunction == NeuronState.TANH) return FunctiiActivare.CalculActivareTanh(neuron);
-            if (neuron.activationFunction == NeuronState.LINIARA) return FunctiiActivare.CalculActivareLiniara(neuron);
-
-            return 0f;
-        }
-
-        private double CalculateInput(Neuron neuron)
-        {
-            if (neuron.inputFunction == NeuronState.SUM) return FunctiiInput.CalculInputSuma(neuron);
-            if (neuron.inputFunction == NeuronState.PROD) return FunctiiInput.CalculInputProd(neuron);
-            if (neuron.inputFunction == NeuronState.MAX) return FunctiiInput.CalculInputMax(neuron);
-            if (neuron.inputFunction == NeuronState.MIN) return FunctiiInput.CalculInputMin(neuron);
-
-            return 0f;
-        }
-
-        private void TransferData(List<RoundButton> left, List<RoundButton> right)
-        {
-            for(int i = 0; i < right.Count; i++)
-            {
-                for(int j = 0; j < right[i].neuron.x.Length; j++)
+                Point point = new Point(margin + radius * 3 / 2 + i * spaceBetweenNeurons, 12);
+                RoundButton rb = new RoundButton
                 {
-                    right[i].neuron.x[j] = left[j].neuron.output;
+                    Name = i.ToString(),
+                    Height = 60,
+                    Width = radius * 2,
+                    BorderRadius = 20,
+                    Text = "Hidden Layer - " + i.ToString(),
+                    layer = i,
+                    Location = point,
+                };
+                rb.Click += (sender, e) => HiddenLayerButton_Click(sender, e);
+                topPanel.Controls.Add(rb);
+            }
+        }
+
+        private void HiddenLayerButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            RoundButton roundButton = (RoundButton)sender;
+            List<RoundButton> rbs = LayersButtons[roundButton.layer];
+            using (var form = new HiddenLayer(rbs[0]))
+            {
+                var result = form.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                    int[] returnStates = form.returnStates;
+                    double[] returnValues = form.returnValues;
+
+                    foreach(RoundButton rb in rbs)
+                    {
+                        rb.neuron.inputFunction = returnStates[0];
+                        rb.neuron.activationFunction = returnStates[1];
+                        rb.neuron.binaryState = returnStates[2];
+
+                        rb.neuron.teta = returnValues[0];
+                        rb.neuron.g = returnValues[1];
+                    }
+                    UpdateData();
                 }
             }
         }
@@ -239,10 +214,7 @@ namespace Prohect2
                     int[] nOfNeurons = {val[1], val[5], val[2], val[3], val[4] };
 
                     nOfHiddenLayers = val[0];
-
-                    if (nOfHiddenLayers == 1) spaceBetweenNeurons = 1120 / 2;
-                    if (nOfHiddenLayers == 2) spaceBetweenNeurons = 1120 / 3;
-                    if (nOfHiddenLayers == 3) spaceBetweenNeurons = 1120 / 4;
+                    spaceBetweenNeurons = 1120 / (nOfHiddenLayers + 1);
 
                     int maxNumber = nOfNeurons.Max();
                     int maxSize = topMargin + (maxNumber - 1) * heightBetweenNeurons + radius;
@@ -274,25 +246,71 @@ namespace Prohect2
             AddHiddenLayerButtons();
             UpdateData();
         }
-
-        private void AddHiddenLayerButtons()
+        private void UpdateData()
         {
-            topPanel.Controls.Clear();
+            TransferData(LayersButtons[0], LayersButtons[1]);
             for (int i = 1; i <= nOfHiddenLayers; i++)
             {
-                Point point = new Point(margin + radius * 3 / 2 + i * spaceBetweenNeurons, 12);
-                RoundButton rb = new RoundButton
-                {
-                    Name = i.ToString(),
-                    Height = 60,
-                    Width = radius * 2,
-                    BorderRadius = 20,
-                    Text = "Hidden Layer - " + i.ToString(),
-                    layer = i,
-                    Location = point,
-                };
-                topPanel.Controls.Add(rb);
+                CalculateOutput(LayersButtons[i]);
+                TransferData(LayersButtons[i], LayersButtons[i + 1]);
+            }
+            CalculateOutput(LayersButtons[nOfHiddenLayers + 1]);
+        }
+        private void CalculateOutput(List<RoundButton> roundButtons)
+        {
+            foreach (RoundButton rb in roundButtons)
+            {
+                rb.neuron.ginput = CalculateInput(rb.neuron);
+                rb.neuron.activation = CalculateActivation(rb.neuron);
+                rb.neuron.output = CalculateOutputValue(rb.neuron);
             }
         }
+        private double CalculateOutputValue(Neuron neuron)
+        {
+            if (neuron.binaryState == NeuronState.BINARYFALSE) return neuron.activation;
+
+            if (neuron.inputFunction == NeuronState.TREAPTA || neuron.inputFunction == NeuronState.SEMN) return neuron.activation;
+            if (neuron.inputFunction == NeuronState.SIGM)
+            {
+                if (neuron.activation >= 0.5) return 1;
+                return 0;
+            }
+            if (neuron.inputFunction == NeuronState.TANH || neuron.inputFunction == NeuronState.LINIARA)
+            {
+                if (neuron.activation >= 0) return 1;
+                return -1;
+            }
+            return 0;
+        }
+        private double CalculateActivation(Neuron neuron)
+        {
+            if (neuron.activationFunction == NeuronState.TREAPTA) return FunctiiActivare.CalculActivareTreapta(neuron);
+            if (neuron.activationFunction == NeuronState.SEMN) return FunctiiActivare.CalculActivareSemn(neuron);
+            if (neuron.activationFunction == NeuronState.SIGM) return FunctiiActivare.CalculActivareSigmoidala(neuron);
+            if (neuron.activationFunction == NeuronState.TANH) return FunctiiActivare.CalculActivareTanh(neuron);
+            if (neuron.activationFunction == NeuronState.LINIARA) return FunctiiActivare.CalculActivareLiniara(neuron);
+
+            return 0f;
+        }
+        private double CalculateInput(Neuron neuron)
+        {
+            if (neuron.inputFunction == NeuronState.SUM) return FunctiiInput.CalculInputSuma(neuron);
+            if (neuron.inputFunction == NeuronState.PROD) return FunctiiInput.CalculInputProd(neuron);
+            if (neuron.inputFunction == NeuronState.MAX) return FunctiiInput.CalculInputMax(neuron);
+            if (neuron.inputFunction == NeuronState.MIN) return FunctiiInput.CalculInputMin(neuron);
+
+            return 0f;
+        }
+        private void TransferData(List<RoundButton> left, List<RoundButton> right)
+        {
+            for (int i = 0; i < right.Count; i++)
+            {
+                for (int j = 0; j < right[i].neuron.x.Length; j++)
+                {
+                    right[i].neuron.x[j] = left[j].neuron.output;
+                }
+            }
+        }
+
     }
 }

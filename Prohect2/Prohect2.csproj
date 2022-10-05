@@ -63,6 +63,12 @@
     <Compile Include="GenerateNetwork.Designer.cs">
       <DependentUpon>GenerateNetwork.cs</DependentUpon>
     </Compile>
+    <Compile Include="HiddenLayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HiddenLayer.Designer.cs">
+      <DependentUpon>HiddenLayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="HiddenLayerNeuron.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateNetwork.resx">
       <DependentUpon>GenerateNetwork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HiddenLayer.resx">
+      <DependentUpon>HiddenLayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HiddenLayerNeuron.resx">
       <DependentUpon>HiddenLayerNeuron.cs</DependentUpon>
