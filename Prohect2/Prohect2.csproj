@@ -55,6 +55,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Functii\FunctiiActivare.cs" />
+    <Compile Include="Functii\FunctiiInput.cs" />
     <Compile Include="GenerateNetwork.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +76,7 @@
       <DependentUpon>InputNeuron.cs</DependentUpon>
     </Compile>
     <Compile Include="Neuron.cs" />
+    <Compile Include="NeuronState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundButton.cs">

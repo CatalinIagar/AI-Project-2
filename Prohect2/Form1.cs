@@ -5,7 +5,6 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace Prohect2
 {
@@ -14,7 +13,7 @@ namespace Prohect2
         public int margin = 20;
         public int topMargin;
         public int radius = 90;
-        public int spaceBetweenNeurons = 280;
+        public int spaceBetweenNeurons;
         public int heightBetweenNeurons;
         public int nOfHiddenLayers;
         public bool toPaint = false;
@@ -22,7 +21,6 @@ namespace Prohect2
         public Form1()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             heightBetweenNeurons = radius * 3 / 2;
             topMargin = radius;
@@ -40,7 +38,7 @@ namespace Prohect2
             base.OnScroll(se);
             mainPanel.Invalidate();
         }
-        private void AddButtons(int size, int xPos, int nOfButtons, List<RoundButton> buttons, string name)
+        private void AddButtons(int size, int xPos, int nOfButtons, List<RoundButton> buttons, string name, int layer)
         {
             int half = (size - topMargin) / 2;
             int halfCurrentSize = (nOfButtons * (heightBetweenNeurons - 1)) / 2 + radius / 2;
@@ -55,7 +53,8 @@ namespace Prohect2
                     Width = radius,
                     Height = radius,
                     BorderRadius = radius / 2,
-                    Text = name + i.ToString()
+                    Text = name + i.ToString(),
+                    layer = layer,
                 };
                 Point point = new Point(xPos, firstPos + heightBetweenNeurons * i);
                 Point right = new Point(xPos + radius, firstPos + heightBetweenNeurons * i + radius / 2);
@@ -72,14 +71,17 @@ namespace Prohect2
                 }
                 else if (name.Contains("HLayer"))
                 {
-                    Array.Resize(ref rb.neuron.x, LayersButtons[0].Count);
-                    Array.Resize(ref rb.neuron.w, LayersButtons[0].Count);
-                    rb.neuron.nOfInputs = LayersButtons[0].Count;
+                    Array.Resize(ref rb.neuron.x, LayersButtons[layer - 1].Count);
+                    Array.Resize(ref rb.neuron.w, LayersButtons[layer - 1].Count);
+                    rb.neuron.nOfInputs = LayersButtons[layer - 1].Count;
                     rb.Click += (sender, e) => hiddenNeuronButton(sender, e);
                 }
                 else
                 {
-
+                    Array.Resize(ref rb.neuron.x, LayersButtons[layer - 1].Count);
+                    Array.Resize(ref rb.neuron.w, LayersButtons[layer - 1].Count);
+                    rb.neuron.nOfInputs = LayersButtons[layer - 1].Count;
+                    rb.Click += (sender, e) => hiddenNeuronButton(sender, e);
                 }
                 buttons.Add(rb);
                 mainPanel.Controls.Add(rb);
@@ -102,7 +104,7 @@ namespace Prohect2
                         roundButton.neuron.w[i] = val[i];
                     }
 
-                    //updateData();
+                    updateData();
                 }
             }
         }
@@ -119,26 +121,80 @@ namespace Prohect2
                     this.Enabled = true;
                     double val = form.returnValue;
                     roundButton.neuron.x[0] = val;
-                    //updateData();
+                    roundButton.neuron.output = val;
+                    updateData();
                 }
             }
         }
 
         private void updateData()
         {
-            transferInputData();
+            transferData(LayersButtons[0], LayersButtons[1]);
+            for(int i = 1; i <= nOfHiddenLayers; i++)
+            {
+                calculateOutput(LayersButtons[i]);
+                transferData(LayersButtons[i], LayersButtons[i + 1]);
+            }
+            calculateOutput(LayersButtons[nOfHiddenLayers + 1]);
         }
 
-        private void transferInputData()
+        private void calculateOutput(List<RoundButton> roundButtons)
         {
-            List<RoundButton> rbInput = LayersButtons[0];
-            List<RoundButton> rbHL1 = LayersButtons[1];
-            for(int i = 0; i <= rbInput.Count; i++)
+            foreach(RoundButton rb in roundButtons)
             {
-                for(int j = 0; j <= rbHL1.Count; j++)
+                rb.neuron.ginput = calculateInput(rb.neuron);
+                rb.neuron.activation = calculateActivation(rb.neuron);
+                rb.neuron.output = calculateOutputValue(rb.neuron);
+            }
+        }
+
+        private double calculateOutputValue(Neuron neuron)
+        {
+            if (neuron.binaryState == NeuronState.BINARYFALSE) return neuron.activation;
+
+            if (neuron.inputFunction == NeuronState.TREAPTA || neuron.inputFunction == NeuronState.SEMN) return neuron.activation;
+            if (neuron.inputFunction == NeuronState.SIGM)
+            {
+                if (neuron.activation >= 0.5) return 1;
+                return 0;
+            }
+            if (neuron.inputFunction == NeuronState.TANH || neuron.inputFunction == NeuronState.LINIARA)
+            {
+                if (neuron.activation >= 0) return 1;
+                return -1;
+            }
+            return 0;
+        }
+
+        private double calculateActivation(Neuron neuron)
+        {
+            if (neuron.activationFunction == NeuronState.TREAPTA) return FunctiiActivare.calculActivareTreapta(neuron);
+            if (neuron.activationFunction == NeuronState.SEMN) return FunctiiActivare.calculActivareSemn(neuron);
+            if (neuron.activationFunction == NeuronState.SIGM) return FunctiiActivare.calculActivareSigmoidala(neuron);
+            if (neuron.activationFunction == NeuronState.TANH) return FunctiiActivare.calculActivareTanh(neuron);
+            if (neuron.activationFunction == NeuronState.LINIARA) return FunctiiActivare.calculActivareLiniara(neuron);
+
+            return 0f;
+        }
+
+        private double calculateInput(Neuron neuron)
+        {
+            if (neuron.inputFunction == NeuronState.SUM) return FunctiiInput.calculInputSuma(neuron);
+            if (neuron.inputFunction == NeuronState.PROD) return FunctiiInput.calculInputProd(neuron);
+            if (neuron.inputFunction == NeuronState.MAX) return FunctiiInput.calculInputMax(neuron);
+            if (neuron.inputFunction == NeuronState.MIN) return FunctiiInput.calculInputMin(neuron);
+
+            return 0f;
+        }
+
+        private void transferData(List<RoundButton> left, List<RoundButton> right)
+        {
+            for(int i = 0; i < right.Count; i++)
+            {
+                for(int j = 0; j < right[i].neuron.x.Length; j++)
                 {
-                    
-                } 
+                    right[i].neuron.x[j] = left[j].neuron.output;
+                }
             }
         }
 
@@ -190,23 +246,26 @@ namespace Prohect2
 
                     int maxNumber = nOfNeurons.Max();
                     int maxSize = topMargin + (maxNumber - 1) * heightBetweenNeurons + radius;
+                    int layer = 0;
 
                     //addInputs
                     List<RoundButton> radioButtons = new List<RoundButton>();
-                    AddButtons(maxSize, margin + 2 * radius + 0 * spaceBetweenNeurons, nOfNeurons[0], radioButtons, "Input - ");
+                    AddButtons(maxSize, margin + 2 * radius + 0 * spaceBetweenNeurons, nOfNeurons[0], radioButtons, "Input - ", layer);
                     LayersButtons.Add(radioButtons);
+                    layer++;
 
                     //addHiddenLayers
                     for (int i = 1; i < nOfHiddenLayers + 1; i++)
                     {
                         List<RoundButton> radioButtonsH = new List<RoundButton>();
-                        AddButtons(maxSize, margin + 2 * radius + i * spaceBetweenNeurons, nOfNeurons[i + 1], radioButtonsH, "HLayer" + i.ToString() + " - ");
+                        AddButtons(maxSize, margin + 2 * radius + i * spaceBetweenNeurons, nOfNeurons[i + 1], radioButtonsH, "HLayer" + i.ToString() + " - ", layer);
                         LayersButtons.Add(radioButtonsH);
+                        layer++;
                     }
 
                     //addOutputs
                     List<RoundButton> radioButtonsO = new List<RoundButton>();
-                    AddButtons(maxSize, margin + 2 * radius + (nOfHiddenLayers + 1) * spaceBetweenNeurons, nOfNeurons[1], radioButtonsO, "Output - ");
+                    AddButtons(maxSize, margin + 2 * radius + (nOfHiddenLayers + 1) * spaceBetweenNeurons, nOfNeurons[1], radioButtonsO, "Output - ", layer);
                     LayersButtons.Add(radioButtonsO);
                     toPaint = true;
                     mainPanel.Invalidate();

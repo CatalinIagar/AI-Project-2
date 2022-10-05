@@ -11,6 +11,10 @@
         public double activation;
         public double output;
 
+        public int inputFunction;
+        public int activationFunction;
+        public int binaryState;
+
         public Neuron()
         {
             nOfInputs = 0;
@@ -19,6 +23,10 @@
             ginput = 0;
             activation = 0;
             output = 0;
+
+            inputFunction = NeuronState.SUM;
+            activationFunction = NeuronState.TREAPTA;
+            binaryState = NeuronState.BINARYFALSE;
         }
 
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Prohect2
 {
     public partial class HiddenLayerNeuron : Form
@@ -25,6 +26,11 @@ namespace Prohect2
 
             this.name = name;
             this.neuron = neuron;
+
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+            this.AutoSize = true;
+            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             Array.Resize(ref returnValue, neuron.nOfInputs);
 
@@ -56,6 +62,17 @@ namespace Prohect2
                 flowLayoutPanel1.Controls.Add(inputValueTxt);
                 flowLayoutPanel1.Controls.Add(weightValue);
                 flowLayoutPanel1.Controls.Add(weightInputValue);
+            }
+        }
+
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
             }
         }
 

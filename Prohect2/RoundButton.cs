@@ -20,6 +20,7 @@ namespace Prohect2
         public Point left;
         public Point right;
         public Neuron neuron = new Neuron();
+        public int layer;
 
         //Properties
         [Category("RJ Code Advance")]
