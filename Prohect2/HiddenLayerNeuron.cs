@@ -16,10 +16,10 @@ namespace Prohect2
         public string name;
         public Neuron neuron;
         public double[] returnValue;
-        List<Label> inputValues = new List<Label>();
-        List<Label> weightValues = new List<Label>();
-        List<TextBox> inputValuesTxt = new List<TextBox>();
-        List<NumericUpDown> weightsInputValues = new List<NumericUpDown>();
+        readonly List<Label> inputValues = new List<Label>();
+        readonly List<Label> weightValues = new List<Label>();
+        readonly List<TextBox> inputValuesTxt = new List<TextBox>();
+        readonly List<NumericUpDown> weightsInputValues = new List<NumericUpDown>();
         public HiddenLayerNeuron(string name, Neuron neuron)
         {
             InitializeComponent();
@@ -36,22 +36,30 @@ namespace Prohect2
 
             for (int i = 0; i < neuron.nOfInputs; i++)
             {
-                Label inputLabel = new Label();
-                inputLabel.Text = "Input " + i;
+                Label inputLabel = new Label
+                {
+                    Text = "Input " + i
+                };
 
-                TextBox inputValueTxt = new TextBox();
-                inputValueTxt.Text = Convert.ToString(neuron.x[i]);
-                inputValueTxt.Size = new Size(55, 20);
-                inputValueTxt.Enabled = false;
+                TextBox inputValueTxt = new TextBox
+                {
+                    Text = Convert.ToString(neuron.x[i]),
+                    Size = new Size(55, 20),
+                    Enabled = false
+                };
 
-                Label weightValue = new Label();
-                weightValue.Text = "Synaptic Weight " + i;
+                Label weightValue = new Label
+                {
+                    Text = "Synaptic Weight " + i
+                };
 
-                NumericUpDown weightInputValue = new NumericUpDown();
-                weightInputValue.Value = (decimal)neuron.w[i];
-                weightInputValue.DecimalPlaces = 2;
-                weightInputValue.Increment = 0.1M;
-                weightInputValue.Size = new Size(55, 20);
+                NumericUpDown weightInputValue = new NumericUpDown
+                {
+                    Value = (decimal)neuron.w[i],
+                    DecimalPlaces = 2,
+                    Increment = 0.1M,
+                    Size = new Size(55, 20)
+                };
 
                 inputValues.Add(inputLabel);
                 weightValues.Add(weightValue);
@@ -71,18 +79,39 @@ namespace Prohect2
             get
             {
                 CreateParams myCp = base.CreateParams;
-                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                myCp.ClassStyle |= CP_NOCLOSE_BUTTON;
                 return myCp;
             }
         }
 
-        private void roundButton1_Click(object sender, EventArgs e)
+        private void RoundButton1_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < weightsInputValues.Count; i++)
             {
                 returnValue[i] = (double)weightsInputValues[i].Value;
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void HiddenLayerNeuron_Load(object sender, EventArgs e)
+        {
+            if (neuron.inputFunction == NeuronState.SUM) inputLbl.Text = "Suma";
+            if (neuron.inputFunction == NeuronState.PROD) inputLbl.Text = "Produs";
+            if (neuron.inputFunction == NeuronState.MAX) inputLbl.Text = "Maxim";
+            if (neuron.inputFunction == NeuronState.MIN) inputLbl.Text = "Minim";
+
+            if (neuron.activationFunction == NeuronState.TREAPTA) activationLbl.Text = "Treapta";
+            if (neuron.activationFunction == NeuronState.SEMN) activationLbl.Text = "Semn";
+            if (neuron.activationFunction == NeuronState.SIGM) activationLbl.Text = "Sigmoidala";
+            if (neuron.activationFunction == NeuronState.TANH) activationLbl.Text = "TanH";
+            if (neuron.activationFunction == NeuronState.LINIARA) activationLbl.Text = "Liniara";
+
+            if (neuron.binaryState == NeuronState.BINARYFALSE) binaryLbl.Text = "False";
+            if (neuron.binaryState == NeuronState.BINARYTRUE) binaryLbl.Text = "True";
+
+            inputValue.Text = neuron.ginput.ToString();
+            activationValue.Text = neuron.activation.ToString();
+            outputValue.Text = neuron.output.ToString();
         }
     }
 }

@@ -78,7 +78,7 @@
             this.roundButton1.Text = "OK";
             this.roundButton1.TextColor = System.Drawing.Color.White;
             this.roundButton1.UseVisualStyleBackColor = false;
-            this.roundButton1.Click += new System.EventHandler(this.roundButton1_Click);
+            this.roundButton1.Click += new System.EventHandler(this.RoundButton1_Click);
             // 
             // InputNeuron
             // 

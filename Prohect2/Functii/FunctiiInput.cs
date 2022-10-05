@@ -4,7 +4,7 @@ namespace Prohect2
 {
     public class FunctiiInput
     {
-        static public double calculInputSuma(Neuron neuron)
+        static public double CalculInputSuma(Neuron neuron)
         {
             double sum = 0;
             for (int i = 0; i < neuron.nOfInputs; i++)
@@ -14,7 +14,7 @@ namespace Prohect2
             return sum;
         }
 
-        static public double calculInputProd(Neuron neuron)
+        static public double CalculInputProd(Neuron neuron)
         {
             double prod = 0.0;
 
@@ -32,7 +32,7 @@ namespace Prohect2
             return prod;
         }
 
-        static public double calculInputMax(Neuron neuron)
+        static public double CalculInputMax(Neuron neuron)
         {
             if (neuron.nOfInputs == 0) return 0;
             double[] values = new double[neuron.nOfInputs];
@@ -43,7 +43,7 @@ namespace Prohect2
             return values.Max();
         }
 
-        static public double calculInputMin(Neuron neuron)
+        static public double CalculInputMin(Neuron neuron)
         {
             if(neuron.nOfInputs == 0) return 0;
             double[] values = new double[neuron.nOfInputs];
