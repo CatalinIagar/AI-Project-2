@@ -57,8 +57,8 @@ namespace Prohect2
                     layer = layer,
                 };
                 Point point = new Point(xPos, firstPos + heightBetweenNeurons * i);
-                Point right = new Point(xPos + radius, firstPos + heightBetweenNeurons * i + radius / 2);
-                Point left = new Point(xPos, firstPos + heightBetweenNeurons * i + radius / 2);
+                Point right = new Point(xPos + radius - 3, firstPos + heightBetweenNeurons * i + radius / 2);
+                Point left = new Point(xPos + 3, firstPos + heightBetweenNeurons * i + radius / 2);
                 rb.Location = point;
                 rb.right = right;
                 rb.left = left;
@@ -271,7 +271,28 @@ namespace Prohect2
                     mainPanel.Invalidate();
                 }
             }
+            AddHiddenLayerButtons();
             UpdateData();
+        }
+
+        private void AddHiddenLayerButtons()
+        {
+            topPanel.Controls.Clear();
+            for (int i = 1; i <= nOfHiddenLayers; i++)
+            {
+                Point point = new Point(margin + radius * 3 / 2 + i * spaceBetweenNeurons, 12);
+                RoundButton rb = new RoundButton
+                {
+                    Name = i.ToString(),
+                    Height = 60,
+                    Width = radius * 2,
+                    BorderRadius = 20,
+                    Text = "Hidden Layer - " + i.ToString(),
+                    layer = i,
+                    Location = point,
+                };
+                topPanel.Controls.Add(rb);
+            }
         }
     }
 }
