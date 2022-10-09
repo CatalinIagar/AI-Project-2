@@ -41,6 +41,7 @@
             this.hidden3NeuronsInput = new System.Windows.Forms.NumericUpDown();
             this.hidden3Lbl = new System.Windows.Forms.Label();
             this.generateBtn = new Prohect2.RoundButton();
+            this.btnCancel = new Prohect2.RoundButton();
             ((System.ComponentModel.ISupportInitialize)(this.layersInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputNeuronsInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputNeuronsInput)).BeginInit();
@@ -79,7 +80,7 @@
             0,
             0,
             0});
-            this.layersInput.ValueChanged += new System.EventHandler(this.layersInput_ValueChanged);
+            this.layersInput.ValueChanged += new System.EventHandler(this.LayersInput_ValueChanged);
             // 
             // outputNeuronsInput
             // 
@@ -257,7 +258,26 @@
             this.generateBtn.Text = "Generate";
             this.generateBtn.TextColor = System.Drawing.Color.White;
             this.generateBtn.UseVisualStyleBackColor = false;
-            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
+            this.generateBtn.Click += new System.EventHandler(this.GenerateBtn_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCancel.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnCancel.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancel.BorderRadius = 10;
+            this.btnCancel.BorderSize = 0;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(116, 276);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(100, 40);
+            this.btnCancel.TabIndex = 15;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TextColor = System.Drawing.Color.White;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // GenerateNetwork
             // 
@@ -266,6 +286,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(319, 461);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.generateBtn);
             this.Controls.Add(this.hidden3NeuronsInput);
             this.Controls.Add(this.hidden3Lbl);
@@ -307,5 +328,6 @@
         private System.Windows.Forms.NumericUpDown hidden3NeuronsInput;
         private System.Windows.Forms.Label hidden3Lbl;
         private RoundButton generateBtn;
+        private RoundButton btnCancel;
     }
 }

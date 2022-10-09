@@ -39,7 +39,7 @@ namespace Prohect2
             gValue.Value = (decimal)roundButton.neuron.g;
         }
 
-        private void roundButton1_Click(object sender, EventArgs e)
+        private void RoundButton1_Click(object sender, EventArgs e)
         {
             if (btnInputSum.Checked) returnStates[0] = NeuronState.SUM;
             if (btnInputProd.Checked) returnStates[0] = NeuronState.PROD;

@@ -254,12 +254,17 @@ namespace Prohect2
                     LayersButtons.Add(radioButtonsO);
                     toPaint = true;
                     mainPanel.Invalidate();
+
+                    this.inputButton.Enabled = true;
+                    this.outputButton.Enabled = true;
+                    AddHiddenLayerButtons();
+                    UpdateData();
+                }
+                if(result == DialogResult.Cancel)
+                {
+                    this.Enabled = true;
                 }
             }
-            this.inputButton.Enabled = true;
-            this.outputButton.Enabled = true;
-            AddHiddenLayerButtons();
-            UpdateData();
         }
         private void UpdateData()
         {
@@ -327,7 +332,7 @@ namespace Prohect2
             }
         }
 
-        private void inputButton_Click(object sender, EventArgs e)
+        private void InputButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
             using (var form = new InputForm(LayersButtons[0]))
@@ -344,6 +349,19 @@ namespace Prohect2
                         buttons[i].neuron.x[0] = values[i];
                     }
                     UpdateData();
+                }
+            }
+        }
+
+        private void outputButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            using(var form = new OutputForm(LayersButtons[nOfHiddenLayers + 1]))
+            {
+                var result = form.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    this.Enabled = true;
                 }
             }
         }

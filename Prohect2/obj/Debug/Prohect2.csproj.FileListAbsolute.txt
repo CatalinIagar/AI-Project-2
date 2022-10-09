@@ -14,3 +14,4 @@ C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.InputNeuron.resources
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.HiddenLayerNeuron.resources
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.HiddenLayer.resources
 C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.InputForm.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Debug\Prohect2.OutputForm.resources

@@ -15,17 +15,7 @@ namespace Prohect2
 
             this.ReturnValue = new int[6];
         }
-        private const int CP_NOCLOSE_BUTTON = 0x200;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams myCp = base.CreateParams;
-                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
-                return myCp;
-            }
-        }
-        private void layersInput_ValueChanged(object sender, EventArgs e)
+        private void LayersInput_ValueChanged(object sender, EventArgs e)
         {
             if(layersInput.Value == 3)
             {
@@ -55,7 +45,7 @@ namespace Prohect2
                 hidden3NeuronsInput.Enabled = false;
             }
         }
-        private void generateBtn_Click(object sender, EventArgs e)
+        private void GenerateBtn_Click(object sender, EventArgs e)
         {
             this.ReturnValue[0] = (int)layersInput.Value;
             this.ReturnValue[1] = (int)inputNeuronsInput.Value;
@@ -79,6 +69,23 @@ namespace Prohect2
                 this.ReturnValue[4] = (int)hidden3NeuronsInput.Value;
             }
             this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle |= CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }
