@@ -12,7 +12,7 @@ namespace Prohect2
 {
     public partial class OutputForm : Form
     {
-        List<RoundButton> buttons;
+        readonly List<RoundButton> buttons;
         public OutputForm(List<RoundButton> rb)
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace Prohect2
                 flowLayoutPanel1.Controls.Add(value);
             }
         }
-        private void roundButton1_Click(object sender, EventArgs e)
+        private void RoundButton1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();

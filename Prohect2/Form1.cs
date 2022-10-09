@@ -351,7 +351,7 @@ namespace Prohect2
                 }
             }
         }
-        private void outputButton_Click(object sender, EventArgs e)
+        private void OutputButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
             using(var form = new OutputForm(LayersButtons[nOfHiddenLayers + 1]))

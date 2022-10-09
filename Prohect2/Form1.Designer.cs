@@ -85,7 +85,7 @@
             this.outputButton.Text = "Show Output Values";
             this.outputButton.TextColor = System.Drawing.Color.White;
             this.outputButton.UseVisualStyleBackColor = false;
-            this.outputButton.Click += new System.EventHandler(this.outputButton_Click);
+            this.outputButton.Click += new System.EventHandler(this.OutputButton_Click);
             // 
             // inputButton
             // 
