@@ -22,7 +22,6 @@ namespace Prohect2
 
             buttons = rb;
         }
-
         private void OutputForm_Load(object sender, EventArgs e)
         {
             foreach (RoundButton button in buttons)
@@ -45,13 +44,11 @@ namespace Prohect2
                 flowLayoutPanel1.Controls.Add(value);
             }
         }
-
         private void roundButton1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {

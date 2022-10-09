@@ -72,7 +72,6 @@ namespace Prohect2
                 flowLayoutPanel1.Controls.Add(weightInputValue);
             }
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -83,7 +82,6 @@ namespace Prohect2
                 return myCp;
             }
         }
-
         private void RoundButton1_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < weightsInputValues.Count; i++)
@@ -92,7 +90,6 @@ namespace Prohect2
             }
             this.DialogResult = DialogResult.OK;
         }
-
         private void HiddenLayerNeuron_Load(object sender, EventArgs e)
         {
             if (neuron.inputFunction == NeuronState.SUM) inputLbl.Text = "Suma";

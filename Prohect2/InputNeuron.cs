@@ -26,7 +26,6 @@ namespace Prohect2
             this.inputNr.Value = (decimal)neuron.x[0];
             this.Text = "Input Neuron - " + name;
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -37,7 +36,6 @@ namespace Prohect2
                 return myCp;
             }
         }
-
         private void RoundButton1_Click(object sender, EventArgs e)
         {
             

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.outputButton = new Prohect2.RoundButton();
             this.inputButton = new Prohect2.RoundButton();
             this.generateButton = new Prohect2.RoundButton();
-            this.topPanel = new System.Windows.Forms.Panel();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.leftPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,25 @@
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(139, 767);
             this.leftPanel.TabIndex = 0;
+            // 
+            // topPanel
+            // 
+            this.topPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.topPanel.Location = new System.Drawing.Point(139, 0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(1550, 84);
+            this.topPanel.TabIndex = 1;
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.AutoScroll = true;
+            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.mainPanel.Location = new System.Drawing.Point(139, 84);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1550, 684);
+            this.mainPanel.TabIndex = 2;
+            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MainPanel_Scroll);
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // outputButton
             // 
@@ -107,25 +126,6 @@
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
-            // topPanel
-            // 
-            this.topPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.topPanel.Location = new System.Drawing.Point(139, 0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1550, 84);
-            this.topPanel.TabIndex = 1;
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.AutoScroll = true;
-            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.mainPanel.Location = new System.Drawing.Point(139, 84);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1550, 684);
-            this.mainPanel.TabIndex = 2;
-            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MainPanel_Scroll);
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,7 +135,7 @@
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.leftPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Proiect 2";
             this.leftPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

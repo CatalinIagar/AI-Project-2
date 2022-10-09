@@ -71,7 +71,6 @@ namespace Prohect2
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -82,7 +81,6 @@ namespace Prohect2
                 return myCp;
             }
         }
-
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

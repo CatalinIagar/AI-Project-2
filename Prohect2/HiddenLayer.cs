@@ -38,7 +38,6 @@ namespace Prohect2
             tetaValue.Value = (decimal)roundButton.neuron.teta;
             gValue.Value = (decimal)roundButton.neuron.g;
         }
-
         private void RoundButton1_Click(object sender, EventArgs e)
         {
             if (btnInputSum.Checked) returnStates[0] = NeuronState.SUM;
@@ -60,7 +59,6 @@ namespace Prohect2
 
             this.DialogResult = DialogResult.OK;
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {

@@ -331,7 +331,6 @@ namespace Prohect2
                 }
             }
         }
-
         private void InputButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -352,7 +351,6 @@ namespace Prohect2
                 }
             }
         }
-
         private void outputButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;

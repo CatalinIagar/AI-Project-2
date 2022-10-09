@@ -55,7 +55,6 @@ namespace Prohect2
                 flowLayoutPanel1.Controls.Add(value);
             }
         }
-
         private void RoundButton1_Click(object sender, EventArgs e)
         {
             for(int i = 0; i < values.Count; i++)
@@ -65,7 +64,6 @@ namespace Prohect2
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
