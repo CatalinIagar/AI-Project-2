@@ -73,7 +73,7 @@
             0});
             this.layersInput.Name = "layersInput";
             this.layersInput.Size = new System.Drawing.Size(60, 20);
-            this.layersInput.TabIndex = 1;
+            this.layersInput.TabIndex = 0;
             this.layersInput.Value = new decimal(new int[] {
             1,
             0,
@@ -96,7 +96,7 @@
             0});
             this.outputNeuronsInput.Name = "outputNeuronsInput";
             this.outputNeuronsInput.Size = new System.Drawing.Size(60, 20);
-            this.outputNeuronsInput.TabIndex = 3;
+            this.outputNeuronsInput.TabIndex = 2;
             this.outputNeuronsInput.Value = new decimal(new int[] {
             1,
             0,
@@ -127,7 +127,7 @@
             0});
             this.inputNeuronsInput.Name = "inputNeuronsInput";
             this.inputNeuronsInput.Size = new System.Drawing.Size(60, 20);
-            this.inputNeuronsInput.TabIndex = 5;
+            this.inputNeuronsInput.TabIndex = 1;
             this.inputNeuronsInput.Value = new decimal(new int[] {
             1,
             0,
@@ -159,7 +159,7 @@
             0});
             this.hidden2NeuronsInput.Name = "hidden2NeuronsInput";
             this.hidden2NeuronsInput.Size = new System.Drawing.Size(60, 20);
-            this.hidden2NeuronsInput.TabIndex = 9;
+            this.hidden2NeuronsInput.TabIndex = 4;
             this.hidden2NeuronsInput.Value = new decimal(new int[] {
             1,
             0,
@@ -191,7 +191,7 @@
             0});
             this.hidden1NeuronsInput.Name = "hidden1NeuronsInput";
             this.hidden1NeuronsInput.Size = new System.Drawing.Size(60, 20);
-            this.hidden1NeuronsInput.TabIndex = 11;
+            this.hidden1NeuronsInput.TabIndex = 3;
             this.hidden1NeuronsInput.Value = new decimal(new int[] {
             1,
             0,
@@ -223,7 +223,7 @@
             0});
             this.hidden3NeuronsInput.Name = "hidden3NeuronsInput";
             this.hidden3NeuronsInput.Size = new System.Drawing.Size(60, 20);
-            this.hidden3NeuronsInput.TabIndex = 13;
+            this.hidden3NeuronsInput.TabIndex = 5;
             this.hidden3NeuronsInput.Value = new decimal(new int[] {
             1,
             0,

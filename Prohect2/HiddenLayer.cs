@@ -18,6 +18,9 @@ namespace Prohect2
         {
             InitializeComponent();
 
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+
             if(roundButton.neuron.inputFunction == NeuronState.SUM) btnInputSum.Checked = true;
             if(roundButton.neuron.inputFunction == NeuronState.PROD) btnInputProd.Checked = true;
             if(roundButton.neuron.inputFunction == NeuronState.MAX) btnInputMax.Checked = true;
@@ -56,6 +59,17 @@ namespace Prohect2
             returnValues[1] = (double)gValue.Value;
 
             this.DialogResult = DialogResult.OK;
+        }
+
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle |= CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
         }
     }
 }

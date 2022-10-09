@@ -57,8 +57,8 @@ namespace Prohect2
                     layer = layer,
                 };
                 Point point = new Point(xPos, firstPos + heightBetweenNeurons * i);
-                Point right = new Point(xPos + radius - 3, firstPos + heightBetweenNeurons * i + radius / 2);
-                Point left = new Point(xPos + 3, firstPos + heightBetweenNeurons * i + radius / 2);
+                Point right = new Point(xPos + radius, firstPos + heightBetweenNeurons * i + radius / 2);
+                Point left = new Point(xPos, firstPos + heightBetweenNeurons * i + radius / 2);
                 rb.Location = point;
                 rb.right = right;
                 rb.left = left;
@@ -127,10 +127,12 @@ namespace Prohect2
         private void AddHiddenLayerButtons()
         {
             topPanel.Controls.Clear();
+            Point point;
+            RoundButton rb;
             for (int i = 1; i <= nOfHiddenLayers; i++)
             {
-                Point point = new Point(margin + radius * 3 / 2 + i * spaceBetweenNeurons, 12);
-                RoundButton rb = new RoundButton
+                point = new Point(margin + radius * 3 / 2 + i * spaceBetweenNeurons, 12);
+                rb = new RoundButton
                 {
                     Name = i.ToString(),
                     Height = 60,
@@ -143,8 +145,20 @@ namespace Prohect2
                 rb.Click += (sender, e) => HiddenLayerButton_Click(sender, e);
                 topPanel.Controls.Add(rb);
             }
+            point = new Point(margin + radius * 3 / 2 + (nOfHiddenLayers + 1) * spaceBetweenNeurons, 12);
+            rb = new RoundButton
+            {
+                Name = (nOfHiddenLayers + 1).ToString(),
+                Height = 60,
+                Width = radius * 2,
+                BorderRadius = 20,
+                Text = "Output Layer",
+                layer = (nOfHiddenLayers + 1),
+                Location = point,
+            };
+            rb.Click += (sender, e) => HiddenLayerButton_Click(sender, e);
+            topPanel.Controls.Add(rb);
         }
-
         private void HiddenLayerButton_Click(object sender, EventArgs e)
         {
             this.Enabled = false;
@@ -172,7 +186,6 @@ namespace Prohect2
                 }
             }
         }
-
         private void MainPanel_Scroll(object sender, ScrollEventArgs e)
         {
             this.Invalidate();
@@ -243,6 +256,8 @@ namespace Prohect2
                     mainPanel.Invalidate();
                 }
             }
+            this.inputButton.Enabled = true;
+            this.outputButton.Enabled = true;
             AddHiddenLayerButtons();
             UpdateData();
         }
@@ -312,5 +327,25 @@ namespace Prohect2
             }
         }
 
+        private void inputButton_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+            using (var form = new InputForm(LayersButtons[0]))
+            {
+                var result = form.ShowDialog();
+                if(result == DialogResult.OK)
+                {
+                    this.Enabled = true;
+                    double[] values = form.returnValues;
+
+                    List<RoundButton> buttons = LayersButtons[0];
+                    for(int i = 0; i < buttons.Count; i++)
+                    {
+                        buttons[i].neuron.x[0] = values[i];
+                    }
+                    UpdateData();
+                }
+            }
+        }
     }
 }

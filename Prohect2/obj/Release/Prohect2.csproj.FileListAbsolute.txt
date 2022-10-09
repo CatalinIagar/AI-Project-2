@@ -1,0 +1,15 @@
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Release\Prohect2.exe.config
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Release\Prohect2.exe
+C:\Faculta\Ai\Prohect2\Prohect2\bin\Release\Prohect2.pdb
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.csproj.AssemblyReference.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.csproj.SuggestedBindingRedirects.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.Form1.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.GenerateNetwork.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.HiddenLayer.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.HiddenLayerNeuron.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.InputNeuron.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.Properties.Resources.resources
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.csproj.GenerateResource.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.csproj.CoreCompileInputs.cache
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.exe
+C:\Faculta\Ai\Prohect2\Prohect2\obj\Release\Prohect2.pdb
