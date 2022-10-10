@@ -25,7 +25,7 @@
             output = 0;
 
             inputFunction = NeuronState.SUM;
-            activationFunction = NeuronState.TREAPTA;
+            activationFunction = NeuronState.SIGM;
             binaryState = NeuronState.BINARYFALSE;
         }
 

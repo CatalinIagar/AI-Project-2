@@ -289,13 +289,13 @@ namespace Prohect2
         {
             if (neuron.binaryState == NeuronState.BINARYFALSE) return neuron.activation;
 
-            if (neuron.inputFunction == NeuronState.TREAPTA || neuron.inputFunction == NeuronState.SEMN) return neuron.activation;
-            if (neuron.inputFunction == NeuronState.SIGM)
+            if (neuron.activationFunction == NeuronState.TREAPTA || neuron.activationFunction == NeuronState.SEMN) return neuron.activation;
+            if (neuron.activationFunction == NeuronState.SIGM)
             {
                 if (neuron.activation >= 0.5) return 1;
                 return 0;
             }
-            if (neuron.inputFunction == NeuronState.TANH || neuron.inputFunction == NeuronState.LINIARA)
+            if (neuron.activationFunction == NeuronState.TANH || neuron.activationFunction == NeuronState.LINIARA)
             {
                 if (neuron.activation >= 0) return 1;
                 return -1;

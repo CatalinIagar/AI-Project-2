@@ -21,19 +21,19 @@ namespace Prohect2
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
-            if(roundButton.neuron.inputFunction == NeuronState.SUM) btnInputSum.Checked = true;
-            if(roundButton.neuron.inputFunction == NeuronState.PROD) btnInputProd.Checked = true;
-            if(roundButton.neuron.inputFunction == NeuronState.MAX) btnInputMax.Checked = true;
-            if(roundButton.neuron.inputFunction == NeuronState.MIN) btnInputMin.Checked = true;
+            if (roundButton.neuron.inputFunction == NeuronState.SUM) btnInputSum.Checked = true;
+            if (roundButton.neuron.inputFunction == NeuronState.PROD) btnInputProd.Checked = true;
+            if (roundButton.neuron.inputFunction == NeuronState.MAX) btnInputMax.Checked = true;
+            if (roundButton.neuron.inputFunction == NeuronState.MIN) btnInputMin.Checked = true;
 
-            if(roundButton.neuron.activationFunction == NeuronState.TREAPTA) btnActTreapta.Checked = true;
-            if(roundButton.neuron.activationFunction == NeuronState.SEMN) btnActSemn.Checked = true;
-            if(roundButton.neuron.activationFunction == NeuronState.SIGM) btnActSigm.Checked = true;
-            if(roundButton.neuron.activationFunction == NeuronState.TANH) btnActTanh.Checked = true;
-            if(roundButton.neuron.activationFunction == NeuronState.LINIARA) btnActLiniara.Checked = true;
+            if (roundButton.neuron.activationFunction == NeuronState.TREAPTA) btnActTreapta.Checked = true;
+            if (roundButton.neuron.activationFunction == NeuronState.SEMN) btnActSemn.Checked = true;
+            if (roundButton.neuron.activationFunction == NeuronState.SIGM) btnActSigm.Checked = true;
+            if (roundButton.neuron.activationFunction == NeuronState.TANH) btnActTanh.Checked = true;
+            if (roundButton.neuron.activationFunction == NeuronState.LINIARA) btnActLiniara.Checked = true;
 
-            if(roundButton.neuron.binaryState == NeuronState.BINARYTRUE) btnBinaryTrue.Checked = true;
-            if(roundButton.neuron.binaryState == NeuronState.BINARYFALSE) btnBinaryFalse.Checked = true;
+            if (roundButton.neuron.binaryState == NeuronState.BINARYTRUE) btnBinaryTrue.Checked = true;
+            if (roundButton.neuron.binaryState == NeuronState.BINARYFALSE) btnBinaryFalse.Checked = true;
 
             tetaValue.Value = (decimal)roundButton.neuron.teta;
             gValue.Value = (decimal)roundButton.neuron.g;
