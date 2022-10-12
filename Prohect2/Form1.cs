@@ -22,7 +22,7 @@ namespace Prohect2
         {
             InitializeComponent();
 
-            heightBetweenNeurons = radius * 3 / 2;
+            heightBetweenNeurons = radius * 4 / 3;
             topMargin = radius;
 
             this.MinimizeBox = true;

@@ -19,30 +19,30 @@ namespace Prohect2
         {
             if(layersInput.Value == 3)
             {
-                hidden1Lbl.Enabled = true;
-                hidden2Lbl.Enabled = true;
-                hidden3Lbl.Enabled = true;
-                hidden1NeuronsInput.Enabled = true;
-                hidden2NeuronsInput.Enabled = true;
-                hidden3NeuronsInput.Enabled = true;
+                hidden1Lbl.Visible = true;
+                hidden2Lbl.Visible = true;
+                hidden3Lbl.Visible = true;
+                hidden1NeuronsInput.Visible = true;
+                hidden2NeuronsInput.Visible = true;
+                hidden3NeuronsInput.Visible = true;
             }
             if(layersInput.Value == 2)
             {
-                hidden1Lbl.Enabled = true;
-                hidden2Lbl.Enabled = true;
-                hidden3Lbl.Enabled = false;
-                hidden1NeuronsInput.Enabled = true;
-                hidden2NeuronsInput.Enabled = true;
-                hidden3NeuronsInput.Enabled = false;
+                hidden1Lbl.Visible = true;
+                hidden2Lbl.Visible = true;
+                hidden3Lbl.Visible = false;
+                hidden1NeuronsInput.Visible = true;
+                hidden2NeuronsInput.Visible = true;
+                hidden3NeuronsInput.Visible = false;
             }
             if (layersInput.Value == 1)
             {
-                hidden1Lbl.Enabled = true;
-                hidden2Lbl.Enabled = false;
-                hidden3Lbl.Enabled = false;
-                hidden1NeuronsInput.Enabled = true;
-                hidden2NeuronsInput.Enabled = false;
-                hidden3NeuronsInput.Enabled = false;
+                hidden1Lbl.Visible = true;
+                hidden2Lbl.Visible = false;
+                hidden3Lbl.Visible = false;
+                hidden1NeuronsInput.Visible = true;
+                hidden2NeuronsInput.Visible = false;
+                hidden3NeuronsInput.Visible = false;
             }
         }
         private void GenerateBtn_Click(object sender, EventArgs e)
