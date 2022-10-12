@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.leftPanel = new System.Windows.Forms.Panel();
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.aaButton = new System.Windows.Forms.CheckBox();
+            this.mainPanel = new Prohect2.CustomPanel();
             this.outputButton = new Prohect2.RoundButton();
             this.inputButton = new Prohect2.RoundButton();
             this.generateButton = new Prohect2.RoundButton();
-            this.topPanel = new System.Windows.Forms.Panel();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.leftPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // leftPanel
             // 
             this.leftPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.leftPanel.Controls.Add(this.aaButton);
             this.leftPanel.Controls.Add(this.outputButton);
             this.leftPanel.Controls.Add(this.inputButton);
             this.leftPanel.Controls.Add(this.generateButton);
@@ -47,6 +49,38 @@
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(139, 767);
             this.leftPanel.TabIndex = 0;
+            // 
+            // topPanel
+            // 
+            this.topPanel.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.topPanel.Location = new System.Drawing.Point(139, 0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(1550, 84);
+            this.topPanel.TabIndex = 1;
+            // 
+            // aaButton
+            // 
+            this.aaButton.AutoSize = true;
+            this.aaButton.Checked = true;
+            this.aaButton.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.aaButton.Location = new System.Drawing.Point(24, 252);
+            this.aaButton.Name = "aaButton";
+            this.aaButton.Size = new System.Drawing.Size(80, 17);
+            this.aaButton.TabIndex = 9;
+            this.aaButton.Text = "AntiAliasing";
+            this.aaButton.UseVisualStyleBackColor = true;
+            this.aaButton.CheckedChanged += new System.EventHandler(this.aaButton_CheckedChanged_1);
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.AutoScroll = true;
+            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.mainPanel.Location = new System.Drawing.Point(139, 84);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1550, 684);
+            this.mainPanel.TabIndex = 2;
+            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MainPanel_Scroll);
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // outputButton
             // 
@@ -107,25 +141,6 @@
             this.generateButton.UseVisualStyleBackColor = false;
             this.generateButton.Click += new System.EventHandler(this.GenerateButton_Click);
             // 
-            // topPanel
-            // 
-            this.topPanel.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.topPanel.Location = new System.Drawing.Point(139, 0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1550, 84);
-            this.topPanel.TabIndex = 1;
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.AutoScroll = true;
-            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.mainPanel.Location = new System.Drawing.Point(139, 84);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1550, 684);
-            this.mainPanel.TabIndex = 2;
-            this.mainPanel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.MainPanel_Scroll);
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,6 +152,7 @@
             this.Name = "Form1";
             this.Text = "Proiect 2";
             this.leftPanel.ResumeLayout(false);
+            this.leftPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -145,10 +161,11 @@
 
         private System.Windows.Forms.Panel leftPanel;
         private System.Windows.Forms.Panel topPanel;
-        private System.Windows.Forms.Panel mainPanel;
         private RoundButton generateButton;
         private RoundButton outputButton;
         private RoundButton inputButton;
+        private CustomPanel mainPanel;
+        private System.Windows.Forms.CheckBox aaButton;
     }
 }
 

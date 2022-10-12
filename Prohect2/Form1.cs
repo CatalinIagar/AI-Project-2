@@ -28,10 +28,7 @@ namespace Prohect2
             this.MinimizeBox = true;
             this.MaximizeBox = false;
             this.AutoSize = true;
-
-            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty
-                | BindingFlags.Instance | BindingFlags.NonPublic, null,
-                mainPanel, new object[] { true });
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         protected override void OnScroll(ScrollEventArgs se)
         {
@@ -194,7 +191,8 @@ namespace Prohect2
         {
             e.Graphics.TranslateTransform(mainPanel.AutoScrollPosition.X, mainPanel.AutoScrollPosition.Y);
             Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+            if(aaButton.Checked) g.SmoothingMode = SmoothingMode.AntiAlias;
+            else g.SmoothingMode = SmoothingMode.None;
             Pen pen = new Pen(Color.Red, 1.75f);
 
             if (toPaint == false) return;
@@ -362,6 +360,10 @@ namespace Prohect2
                     this.Enabled = true;
                 }
             }
+        }
+        private void aaButton_CheckedChanged_1(object sender, EventArgs e)
+        {
+            mainPanel.Invalidate();
         }
     }
 }

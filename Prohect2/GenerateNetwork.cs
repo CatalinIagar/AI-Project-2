@@ -14,7 +14,16 @@ namespace Prohect2
             this.MaximizeBox = false;
 
             this.ReturnValue = new int[6];
+
+            this.KeyPress += new KeyPressEventHandler(CheckReturnKeyPress);
         }
+
+        private void CheckReturnKeyPress(object sender, KeyPressEventArgs e)
+        {
+            Console.WriteLine(e.KeyChar);
+            if (e.KeyChar == (char)Keys.Enter) GenerateNetowrkClick();
+        }
+
         private void LayersInput_ValueChanged(object sender, EventArgs e)
         {
             if(layersInput.Value == 3)
@@ -47,10 +56,15 @@ namespace Prohect2
         }
         private void GenerateBtn_Click(object sender, EventArgs e)
         {
+            GenerateNetowrkClick();
+        }
+
+        private void GenerateNetowrkClick()
+        {
             this.ReturnValue[0] = (int)layersInput.Value;
             this.ReturnValue[1] = (int)inputNeuronsInput.Value;
             this.ReturnValue[5] = (int)outputNeuronsInput.Value;
-            if(ReturnValue[0] == 1)
+            if (ReturnValue[0] == 1)
             {
                 this.ReturnValue[2] = (int)hidden1NeuronsInput.Value;
                 this.ReturnValue[3] = 0;
@@ -71,6 +85,7 @@ namespace Prohect2
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
