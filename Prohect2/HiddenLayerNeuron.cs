@@ -52,7 +52,9 @@ namespace Prohect2
                 {
                     Value = (decimal)neuron.w[i],
                     DecimalPlaces = 2,
-                    Increment = 0.1M,
+                    Increment = 0.01M,
+                    Minimum = 0,
+                    Maximum = 1,
                     Size = new Size(55, 20)
                 };
 

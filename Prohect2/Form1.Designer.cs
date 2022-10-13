@@ -69,7 +69,7 @@
             this.aaButton.TabIndex = 9;
             this.aaButton.Text = "AntiAliasing";
             this.aaButton.UseVisualStyleBackColor = true;
-            this.aaButton.CheckedChanged += new System.EventHandler(this.aaButton_CheckedChanged_1);
+            this.aaButton.CheckedChanged += new System.EventHandler(this.AaButton_CheckedChanged_1);
             // 
             // mainPanel
             // 

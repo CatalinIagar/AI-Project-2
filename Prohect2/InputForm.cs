@@ -36,8 +36,8 @@ namespace Prohect2
                 NumericUpDown value = new NumericUpDown
                 {
                     Increment = 0.01M,
-                    Minimum = -100,
-                    Maximum = 100,
+                    Minimum = 0,
+                    Maximum = 1,
                     DecimalPlaces = 2,
                     Value = (decimal)button.neuron.x[0],
                     Size = new Size(60, 20)

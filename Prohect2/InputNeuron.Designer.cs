@@ -52,11 +52,11 @@
             0,
             131072});
             this.inputNr.Location = new System.Drawing.Point(50, 7);
-            this.inputNr.Minimum = new decimal(new int[] {
-            100,
+            this.inputNr.Maximum = new decimal(new int[] {
+            1,
             0,
             0,
-            -2147483648});
+            0});
             this.inputNr.Name = "inputNr";
             this.inputNr.Size = new System.Drawing.Size(55, 20);
             this.inputNr.TabIndex = 1;

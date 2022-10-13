@@ -361,7 +361,7 @@ namespace Prohect2
                 }
             }
         }
-        private void aaButton_CheckedChanged_1(object sender, EventArgs e)
+        private void AaButton_CheckedChanged_1(object sender, EventArgs e)
         {
             mainPanel.Invalidate();
         }

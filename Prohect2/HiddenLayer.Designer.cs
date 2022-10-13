@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             this.inputPanel = new System.Windows.Forms.Panel();
-            this.inputLbl = new System.Windows.Forms.Label();
-            this.btnInputSum = new System.Windows.Forms.RadioButton();
-            this.btnInputProd = new System.Windows.Forms.RadioButton();
-            this.btnInputMax = new System.Windows.Forms.RadioButton();
             this.btnInputMin = new System.Windows.Forms.RadioButton();
+            this.btnInputMax = new System.Windows.Forms.RadioButton();
+            this.btnInputProd = new System.Windows.Forms.RadioButton();
+            this.btnInputSum = new System.Windows.Forms.RadioButton();
+            this.inputLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnActLiniara = new System.Windows.Forms.RadioButton();
             this.btnActTanh = new System.Windows.Forms.RadioButton();
             this.btnActSigm = new System.Windows.Forms.RadioButton();
             this.btnActSemn = new System.Windows.Forms.RadioButton();
             this.btnActTreapta = new System.Windows.Forms.RadioButton();
             this.activationLbl = new System.Windows.Forms.Label();
-            this.btnActLiniara = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnBinaryFalse = new System.Windows.Forms.RadioButton();
             this.btnBinaryTrue = new System.Windows.Forms.RadioButton();
             this.binaryLbl = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.tetaLbl = new System.Windows.Forms.Label();
-            this.tetaValue = new System.Windows.Forms.NumericUpDown();
             this.gValue = new System.Windows.Forms.NumericUpDown();
             this.gLbl = new System.Windows.Forms.Label();
+            this.tetaValue = new System.Windows.Forms.NumericUpDown();
+            this.tetaLbl = new System.Windows.Forms.Label();
             this.roundButton1 = new Prohect2.RoundButton();
             this.inputPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tetaValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetaValue)).BeginInit();
             this.SuspendLayout();
             // 
             // inputPanel
@@ -71,36 +71,16 @@
             this.inputPanel.Size = new System.Drawing.Size(125, 150);
             this.inputPanel.TabIndex = 0;
             // 
-            // inputLbl
+            // btnInputMin
             // 
-            this.inputLbl.AutoSize = true;
-            this.inputLbl.Location = new System.Drawing.Point(5, 5);
-            this.inputLbl.Name = "inputLbl";
-            this.inputLbl.Size = new System.Drawing.Size(80, 13);
-            this.inputLbl.TabIndex = 0;
-            this.inputLbl.Text = "Input functions:";
-            // 
-            // btnInputSum
-            // 
-            this.btnInputSum.AutoSize = true;
-            this.btnInputSum.Location = new System.Drawing.Point(5, 20);
-            this.btnInputSum.Name = "btnInputSum";
-            this.btnInputSum.Size = new System.Drawing.Size(46, 17);
-            this.btnInputSum.TabIndex = 1;
-            this.btnInputSum.TabStop = true;
-            this.btnInputSum.Text = "Sum";
-            this.btnInputSum.UseVisualStyleBackColor = true;
-            // 
-            // btnInputProd
-            // 
-            this.btnInputProd.AutoSize = true;
-            this.btnInputProd.Location = new System.Drawing.Point(5, 45);
-            this.btnInputProd.Name = "btnInputProd";
-            this.btnInputProd.Size = new System.Drawing.Size(47, 17);
-            this.btnInputProd.TabIndex = 2;
-            this.btnInputProd.TabStop = true;
-            this.btnInputProd.Text = "Prod";
-            this.btnInputProd.UseVisualStyleBackColor = true;
+            this.btnInputMin.AutoSize = true;
+            this.btnInputMin.Location = new System.Drawing.Point(5, 95);
+            this.btnInputMin.Name = "btnInputMin";
+            this.btnInputMin.Size = new System.Drawing.Size(52, 17);
+            this.btnInputMin.TabIndex = 4;
+            this.btnInputMin.TabStop = true;
+            this.btnInputMin.Text = "Minim";
+            this.btnInputMin.UseVisualStyleBackColor = true;
             // 
             // btnInputMax
             // 
@@ -113,16 +93,36 @@
             this.btnInputMax.Text = "Maxim";
             this.btnInputMax.UseVisualStyleBackColor = true;
             // 
-            // btnInputMin
+            // btnInputProd
             // 
-            this.btnInputMin.AutoSize = true;
-            this.btnInputMin.Location = new System.Drawing.Point(5, 95);
-            this.btnInputMin.Name = "btnInputMin";
-            this.btnInputMin.Size = new System.Drawing.Size(52, 17);
-            this.btnInputMin.TabIndex = 4;
-            this.btnInputMin.TabStop = true;
-            this.btnInputMin.Text = "Minim";
-            this.btnInputMin.UseVisualStyleBackColor = true;
+            this.btnInputProd.AutoSize = true;
+            this.btnInputProd.Location = new System.Drawing.Point(5, 45);
+            this.btnInputProd.Name = "btnInputProd";
+            this.btnInputProd.Size = new System.Drawing.Size(47, 17);
+            this.btnInputProd.TabIndex = 2;
+            this.btnInputProd.TabStop = true;
+            this.btnInputProd.Text = "Prod";
+            this.btnInputProd.UseVisualStyleBackColor = true;
+            // 
+            // btnInputSum
+            // 
+            this.btnInputSum.AutoSize = true;
+            this.btnInputSum.Location = new System.Drawing.Point(5, 20);
+            this.btnInputSum.Name = "btnInputSum";
+            this.btnInputSum.Size = new System.Drawing.Size(46, 17);
+            this.btnInputSum.TabIndex = 1;
+            this.btnInputSum.TabStop = true;
+            this.btnInputSum.Text = "Sum";
+            this.btnInputSum.UseVisualStyleBackColor = true;
+            // 
+            // inputLbl
+            // 
+            this.inputLbl.AutoSize = true;
+            this.inputLbl.Location = new System.Drawing.Point(5, 5);
+            this.inputLbl.Name = "inputLbl";
+            this.inputLbl.Size = new System.Drawing.Size(80, 13);
+            this.inputLbl.TabIndex = 0;
+            this.inputLbl.Text = "Input functions:";
             // 
             // panel1
             // 
@@ -136,6 +136,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(125, 150);
             this.panel1.TabIndex = 1;
+            // 
+            // btnActLiniara
+            // 
+            this.btnActLiniara.AutoSize = true;
+            this.btnActLiniara.Location = new System.Drawing.Point(5, 120);
+            this.btnActLiniara.Name = "btnActLiniara";
+            this.btnActLiniara.Size = new System.Drawing.Size(56, 17);
+            this.btnActLiniara.TabIndex = 5;
+            this.btnActLiniara.TabStop = true;
+            this.btnActLiniara.Text = "Liniara";
+            this.btnActLiniara.UseVisualStyleBackColor = true;
             // 
             // btnActTanh
             // 
@@ -190,17 +201,6 @@
             this.activationLbl.TabIndex = 0;
             this.activationLbl.Text = "Activation functions:";
             // 
-            // btnActLiniara
-            // 
-            this.btnActLiniara.AutoSize = true;
-            this.btnActLiniara.Location = new System.Drawing.Point(5, 120);
-            this.btnActLiniara.Name = "btnActLiniara";
-            this.btnActLiniara.Size = new System.Drawing.Size(56, 17);
-            this.btnActLiniara.TabIndex = 5;
-            this.btnActLiniara.TabStop = true;
-            this.btnActLiniara.Text = "Liniara";
-            this.btnActLiniara.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnBinaryFalse);
@@ -253,28 +253,6 @@
             this.panel3.Size = new System.Drawing.Size(125, 150);
             this.panel3.TabIndex = 3;
             // 
-            // tetaLbl
-            // 
-            this.tetaLbl.AutoSize = true;
-            this.tetaLbl.Location = new System.Drawing.Point(5, 5);
-            this.tetaLbl.Name = "tetaLbl";
-            this.tetaLbl.Size = new System.Drawing.Size(32, 13);
-            this.tetaLbl.TabIndex = 0;
-            this.tetaLbl.Text = "Teta:";
-            // 
-            // tetaValue
-            // 
-            this.tetaValue.DecimalPlaces = 2;
-            this.tetaValue.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.tetaValue.Location = new System.Drawing.Point(5, 20);
-            this.tetaValue.Name = "tetaValue";
-            this.tetaValue.Size = new System.Drawing.Size(75, 20);
-            this.tetaValue.TabIndex = 1;
-            // 
             // gValue
             // 
             this.gValue.DecimalPlaces = 2;
@@ -282,7 +260,7 @@
             1,
             0,
             0,
-            65536});
+            131072});
             this.gValue.Location = new System.Drawing.Point(8, 67);
             this.gValue.Name = "gValue";
             this.gValue.Size = new System.Drawing.Size(75, 20);
@@ -301,6 +279,28 @@
             this.gLbl.Size = new System.Drawing.Size(34, 13);
             this.gLbl.TabIndex = 2;
             this.gLbl.Text = "a (g) :";
+            // 
+            // tetaValue
+            // 
+            this.tetaValue.DecimalPlaces = 2;
+            this.tetaValue.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.tetaValue.Location = new System.Drawing.Point(5, 20);
+            this.tetaValue.Name = "tetaValue";
+            this.tetaValue.Size = new System.Drawing.Size(75, 20);
+            this.tetaValue.TabIndex = 1;
+            // 
+            // tetaLbl
+            // 
+            this.tetaLbl.AutoSize = true;
+            this.tetaLbl.Location = new System.Drawing.Point(5, 5);
+            this.tetaLbl.Name = "tetaLbl";
+            this.tetaLbl.Size = new System.Drawing.Size(32, 13);
+            this.tetaLbl.TabIndex = 0;
+            this.tetaLbl.Text = "Teta:";
             // 
             // roundButton1
             // 
@@ -343,8 +343,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tetaValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetaValue)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -31,7 +31,7 @@ namespace Prohect2
                 TextBox value = new TextBox
                 {
                     Enabled = false,
-                    Text = button.neuron.x[0].ToString(),
+                    Text = button.neuron.output.ToString(),
                     Size = new Size(60, 20)
                 };
 
